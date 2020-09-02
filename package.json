@@ -1,0 +1,17 @@
+
+{
+  "name": "motion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "motion.js",
+  "scripts": {
+    "start": "node motion.js"
+  },
+  "keywords": [],
+  "author": "damon bonner",
+  "license": "ISC",
+  "dependencies": {
+    "johnny-five": "^2.0.0",
+    "raspi-io": "^11.0.0"
+  }
+}
