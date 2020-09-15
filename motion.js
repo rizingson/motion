@@ -1,15 +1,17 @@
 
 const { exec } = require('child_process');
 const { configureSocketPort } = require('pigpio');
-configureSocketPort(8889);
+configureSocketPort(8889);  //there was a conflict on default port 8888
 
-//something about memory leaks *shrug*
+//something about memory leaks...? *shrug*
 require('events').EventEmitter.prototype._maxListeners = 20;
 
-let i = 0;
-let recording;
+let i = 0;    //counter for naming recorded videos
+let recording;   
 let streaming;
 
+//johnny-five to access raspberry pi gpio
+//johnny-five needs raspi-io 
 const raspi = require('raspi-io');
 const five = require('johnny-five');
 const board = new five.Board({io: new raspi.RaspiIO()});
@@ -33,7 +35,7 @@ board.on("ready", () => {
   const microwave = new five.Sensor.Digital(7);
 
   microwave.on("change", () => {
-
+     
     console.log(microwave.value);
      //kill stream
      if (streaming === true) {
